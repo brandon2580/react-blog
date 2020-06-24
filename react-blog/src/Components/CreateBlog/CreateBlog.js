@@ -17,7 +17,7 @@ const CreateBlog = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
         callAPI()
         console.log("Successfully submitted")
         setTitleValue('')
