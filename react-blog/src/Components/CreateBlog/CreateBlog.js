@@ -5,6 +5,7 @@ const CreateBlog = () => {
     const [titleValue, setTitleValue] = React.useState('')
     const [authorValue, setAuthorValue] = React.useState('')
     const [contentValue, setContentValue] = React.useState('')
+    const [success, setSuccess] = React.useState(false)
 
     const callAPI = () => {
         fetch("http://localhost:9000/", {
@@ -18,11 +19,20 @@ const CreateBlog = () => {
     }
 
     const handleSubmit = () => {
-        callAPI()
-        console.log("Successfully submitted")
-        setTitleValue('')
-        setAuthorValue('')
-        setContentValue('')
+        if(titleValue && authorValue && contentValue != ''){
+            callAPI()
+            setTitleValue('')
+            setAuthorValue('')
+            setContentValue('')
+            setSuccess(true)
+            console.log("Successfully submitted")
+        } else {
+            setSuccess(<h1 className='center red'>Please fill all fields above</h1>)
+        }
+    }
+
+    if(success == true){
+        setSuccess(<h1 className='center green'>Success!</h1>)
     }
 
     return (
@@ -45,6 +55,7 @@ const CreateBlog = () => {
                     </div>
                 </div>
                 <button type="button" onClick={handleSubmit}>Post Blog</button>
+                {success}
             </div>
         </div>
     )
