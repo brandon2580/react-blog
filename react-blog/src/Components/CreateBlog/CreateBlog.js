@@ -35,6 +35,9 @@ const CreateBlog = () => {
 
     if (success == true) {
         setSuccess(<h1 className='center green'>Success!</h1>)
+        setTimeout(function () {
+            window.location.reload()
+        }, 500);
     }
 
     return (
