@@ -19,19 +19,21 @@ const CreateBlog = () => {
     }
 
     const handleSubmit = () => {
-        if(titleValue && authorValue && contentValue != ''){
+        // Makes sure user actually inputted text and not just empty spaces
+        if (!titleValue.replace(/\s/g, '').length || !authorValue.replace(/\s/g, '').length || !contentValue.replace(/\s/g, '').length) {
+            setSuccess(<h1 className='center red'>Please fill all fields above</h1>)
+        } else {
             callAPI()
+
+            // Resets all input fields after the data is sent to the server
             setTitleValue('')
             setAuthorValue('')
             setContentValue('')
             setSuccess(true)
-            console.log("Successfully submitted")
-        } else {
-            setSuccess(<h1 className='center red'>Please fill all fields above</h1>)
         }
     }
 
-    if(success == true){
+    if (success == true) {
         setSuccess(<h1 className='center green'>Success!</h1>)
     }
 
@@ -55,6 +57,8 @@ const CreateBlog = () => {
                     </div>
                 </div>
                 <button type="button" onClick={handleSubmit}>Post Blog</button>
+
+                {/* The value of success varies based on if what the user inputs is valid */}
                 {success}
             </div>
         </div>
