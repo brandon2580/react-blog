@@ -9,10 +9,10 @@ app.use(cors())
 require('dotenv').config()
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
+  host: process.env.HOST,
+  user: process.env.USER,
   password: process.env.PASSWORD,
-  port: 3300,
+  port: process.env.PORT,
   database: process.env.DATABASE_NAME
 });
 
@@ -20,8 +20,6 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
-
-
 
 app.post("/", (req, res) => {
   console.log('Successful POST req')
