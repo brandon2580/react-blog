@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import '../../App.css'
 
 const ViewBlogs = () => {
@@ -30,7 +31,7 @@ const ViewBlogs = () => {
             <div className='center'>
                 <h1 className='pageHeader'>Published Blogs</h1>
                 <h3>Published blogs will go here</h3>
-                {data.map(blog => {
+                {data.reverse().map(blog => {
                     return (
                         <div className='blogs'>
                             <h1>{blog.title}</h1>
