@@ -35,7 +35,9 @@ const CreateBlog = () => {
 
     if (success == true) {
         setSuccess(<h1 className='center green'>Success!</h1>)
-    }
+        setTimeout(function () {
+            window.location.href = '/view-blogs'
+        }, 500);    }
 
     return (
         <div>
